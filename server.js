@@ -26,9 +26,11 @@ app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 
-app.get('/data', (req, res) => {
+app.get('/data/:id', (req, res) => {
 
-  fs.readFile('./storage/information/1.txt', 'utf8', function(err, data){
+  const id = req.params.id;
+
+  fs.readFile(`./storage/information/${id}.txt`, 'utf8', function(err, data){
     if(err){
         return console.log('读取失败',err)
     }
