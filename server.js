@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs')
 const app = express();
 const port = 3000;
+const YAML = require('js-yaml')
 
 app.all("*",function(req,res,next){
   var orginList=[
@@ -53,6 +54,12 @@ app.get('/data/:id', (req, res) => {
     };
     res.send(response);
   });
+});
+
+app.get('/athletes', (req, res) => {
+  let fileContents = fs.readFileSync('./storage/data/athletes.yaml', 'utf8');
+  let data = YAML.load(fileContents);  
+  res.send(data);
 });
 
 app.listen(port, () => {
