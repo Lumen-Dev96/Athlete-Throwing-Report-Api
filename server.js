@@ -7,12 +7,11 @@ const YAML = require('js-yaml')
 app.all("*",function(req,res,next){
   var orginList=[
       "http://localhost:5173",
-      "http://www.baidu.com"
   ]
-  if(orginList.includes(req.headers.origin.toLowerCase())){
+  // if(orginList.includes(req.headers.origin.toLowerCase())){
       //设置允许跨域的域名，*代表允许任意域名跨域
       res.header("Access-Control-Allow-Origin",req.headers.origin);
-  }
+  // }
   //允许的header类型
   res.header("Access-Control-Allow-Headers", "content-type");
   //跨域允许的请求方式
