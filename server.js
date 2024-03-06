@@ -28,11 +28,28 @@ app.get('/', (req, res) => {
 
 app.get('/data/:id', (req, res) => {
 
-  const id = req.params.id;
+  const id = req.params.id - 1;
+
+  const errData = {
+    testTime: '2023',
+    isTargeted: false,
+    angle1: null,
+    angle2: null,
+    angle3: null,
+    angle4: null,
+    distance: null
+  };
 
   fs.readFile(`./storage/information/${id}.txt`, 'utf8', function(err, data){
     if(err){
-        return console.log('读取失败',err)
+        console.log('Read file failed',err)
+        res.send(errData)
+        return
+    }
+    if (data.length === 0) {
+      console.log('Empty Data',err)
+      res.send(errData)
+      return
     }
     //转换成数组
     const dataArray = data.split(/[(\r\n)\r\n]+/);
