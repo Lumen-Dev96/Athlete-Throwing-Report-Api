@@ -39,16 +39,16 @@ app.get('/data/:id', (req, res) => {
     //删除空项
     dataArray.forEach((item,index)=>{
       if(!item){
-          snsArr.splice(index,1);
+        dataArray.splice(index,1);
       }
     });
     const response = {
       testTime: '2023',
-      isTargeted: dataArray[1].toLowerCase() === 'true',
-      angle1: dataArray[2],
-      angle2: dataArray[3],
-      angle3: dataArray[4],
-      angle4: dataArray[5],
+      isTargeted: dataArray[2].toLowerCase() === 'true',
+      angle1: dataArray[3],
+      angle2: dataArray[4],
+      angle3: dataArray[5],
+      angle4: dataArray[6],
       distance: dataArray[0]
     };
     res.send(response);
