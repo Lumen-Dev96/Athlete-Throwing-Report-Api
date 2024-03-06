@@ -43,13 +43,13 @@ app.get('/data/:id', (req, res) => {
       }
     });
     const response = {
-      testTime: dataArray[0],
+      testTime: '2023',
       isTargeted: dataArray[1].toLowerCase() === 'true',
       angle1: dataArray[2],
       angle2: dataArray[3],
       angle3: dataArray[4],
       angle4: dataArray[5],
-      distance: dataArray[6]
+      distance: dataArray[0]
     };
     res.send(response);
   });
